@@ -2,17 +2,21 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    // Ajusta la velocidad en el Inspector. 5f es un buen valor inicial.
     public float moveSpeed = 5f;
 
-    // Referencias a los componentes (las inicializamos en Start())
+    // VARIABLES DE SALTO (Nuevas)
+    public float jumpForce = 10f; // Fuerza de salto (ajusta en Inspector)
+    public Transform groundCheck; // Objeto de detección de suelo (Arrastra aquí el objeto GroundCheck)
+    public LayerMask groundLayer; // La capa "Ground" que creaste
+    private bool isGrounded; // Indica si está tocando el suelo
+
+    // Componentes del jugador
     private Rigidbody2D rb;
     private Animator animator;
     private SpriteRenderer spriteRenderer;
 
     void Start()
     {
-        // Obtenemos los componentes adjuntos al inicio para usarlos
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -20,25 +24,33 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        // 1. CAPTURAR ENTRADA
-        // Obtiene un valor entre -1 (izquierda), 1 (derecha) o 0 (quieto)
-        float horizontalInput = Input.GetAxisRaw("Horizontal");
+        // 1. COMPROBACIÓN DE SUELO
+        // isGrounded es verdadero si el círculo de detección toca la capa "Ground"
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
 
-        // 2. APLICAR MOVIMIENTO (Física)
-        // Mueve al personaje horizontalmente, manteniendo su velocidad vertical (para el salto)
-        rb.linearVelocity = new Vector2(horizontalInput * moveSpeed, rb.linearVelocity.y);
+        // 2. LÓGICA DE SALTO
+        if (Input.GetButtonDown("Jump") && isGrounded) // "Jump" es la barra espaciadora por defecto
+        {
+            // Aplica fuerza vertical
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+        }
 
         // 3. CONTROLAR ANIMATOR
-        // Le dice al Animator si el personaje se está moviendo o no.
-        // Mathf.Abs() devuelve el valor absoluto (si es -1 o 1, el Animator ve 1)
+        // a) Correr/Idle (ya existente)
+        float horizontalInput = Input.GetAxisRaw("Horizontal");
+        rb.linearVelocity = new Vector2(horizontalInput * moveSpeed, rb.linearVelocity.y);
         animator.SetFloat("Speed", Mathf.Abs(horizontalInput));
 
-        // 4. VOLTEAR EL SPRITE (FLIP)
-        if (horizontalInput > 0.01f) // Si se mueve a la derecha
+        // b) Salto (Nueva)
+        // Usa la comprobación de suelo para decirle al Animator si está saltando
+        animator.SetBool("isJumping", !isGrounded);
+
+        // 4. VOLTEAR EL SPRITE (ya existente)
+        if (horizontalInput > 0.01f)
         {
             spriteRenderer.flipX = false;
         }
-        else if (horizontalInput < -0.01f) // Si se mueve a la izquierda
+        else if (horizontalInput < -0.01f)
         {
             spriteRenderer.flipX = true;
         }
