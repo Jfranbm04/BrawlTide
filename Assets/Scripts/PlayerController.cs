@@ -4,8 +4,7 @@ public class PlayerController : MonoBehaviour
 {
     // VARIABLES DE MOVIMIENTO Y LÍMITE
     public float moveSpeed = 5f;
-    public float jumpForce = 10f; 
-
+    public float jumpForce = 10f;
     public float minX = -10f; 
     public float maxX = 10f;  
 
