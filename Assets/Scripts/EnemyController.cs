@@ -53,7 +53,7 @@ public class EnemyController : MonoBehaviour
 
     void Flip()
     {
-       // Si se mueve a la derecha, NO volteamos el sprite (flipX = false)
+        // Si se mueve a la derecha, NO volteamos el sprite (flipX = false)
         // Si se mueve a la izquierda, SÍ volteamos el sprite (flipX = true)
         spriteRenderer.flipX = !movingRight;
     }
