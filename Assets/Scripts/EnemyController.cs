@@ -3,8 +3,8 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     public float moveSpeed = 4f;
-    public Transform leftLimit;  
-    public Transform rightLimit; 
+    public Transform leftLimit;
+    public Transform rightLimit;
 
 
     private Rigidbody2D rb;
@@ -16,9 +16,9 @@ public class EnemyController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         // Inicializa el SpriteRenderer en Start
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        //spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
-    }   
+    }
 
     void Update()
     {
@@ -51,10 +51,43 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        // 1. Intentamos obtener el script Health del objeto colisionado
+        Health playerHealth = collision.gameObject.GetComponent<Health>();
+
+        // 2. Verificamos si encontramos el script Health Y si el objeto es el jugador
+        if (playerHealth != null && collision.gameObject.CompareTag("Player"))
+        {
+            // 3. Quitamos 1 punto de vida al jugador
+            playerHealth.TakeDamage(1);
+
+            // Opcional: Si quieres que el enemigo rebote o se detenga un momento,
+            // puedes añadir aquí la lógica. Por ahora, solo quita vida.
+        }
+    }
+
     void Flip()
     {
-        // Si se mueve a la derecha, NO volteamos el sprite (flipX = false)
-        // Si se mueve a la izquierda, SÍ volteamos el sprite (flipX = true)
-        spriteRenderer.flipX = !movingRight;
+        // Objeto que representa la nueva rotación
+        Quaternion targetRotation;
+
+        // Si movingRight es true, la rotación es 0 grados (mirando hacia adelante/derecha)
+        if (movingRight)
+        {
+            // Mirando hacia la derecha (0 grados en Y)
+            targetRotation = Quaternion.Euler(0, 0, 0);
+        }
+        // Si movingRight es false, la rotación es 180 grados (mirando a la izquierda)
+        else
+        {
+            // Mirando hacia la izquierda (180 grados en Y)
+            targetRotation = Quaternion.Euler(0, 180, 0);
+        }
+
+        // Aplica la rotación instantáneamente al objeto padre
+        transform.rotation = targetRotation;
     }
+
+
 }
