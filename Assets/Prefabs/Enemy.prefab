@@ -471,7 +471,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 8eb2ff5d15ad57044863329a435b3394, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -496,7 +496,8 @@ GameObject:
   - component: {fileID: 8948220028318226711}
   - component: {fileID: 3656693710547118942}
   - component: {fileID: 5369608584827940840}
-  - component: {fileID: 3640645765682887453}
+  - component: {fileID: 3362878999411928903}
+  - component: {fileID: 371121170335740125}
   m_Layer: 7
   m_Name: Enemy
   m_TagString: Untagged
@@ -514,7 +515,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.2091968, y: -3.1284695, z: 0}
-  m_LocalScale: {x: -0.73, y: 0.73, z: 0.73}
+  m_LocalScale: {x: -0.5649766, y: 0.5649766, z: 0.5649766}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1155541297618491839}
@@ -576,7 +577,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.26, y: 1.45}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
@@ -646,8 +647,8 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!60 &3640645765682887453
-PolygonCollider2D:
+--- !u!61 &3362878999411928903
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -680,34 +681,35 @@ PolygonCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.40729225, y: 0.4913373}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.26, y: 1.45}
+    newSize: {x: 1.26, y: 1.45}
+    adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.14618596, y: 0.34294632}
-      - {x: 0.4100964, y: 0.78833276}
-      - {x: 0.38844174, y: 1.0582454}
-      - {x: 0.09825812, y: 1.6012765}
-      - {x: -0.18150659, y: 1.4796956}
-      - {x: -0.49514621, y: 1.4213197}
-      - {x: -0.6951309, y: 1.2832612}
-      - {x: -0.88547236, y: 1.230375}
-      - {x: -1.1696823, y: 1.0656948}
-      - {x: -1.1892078, y: 0.68889123}
-      - {x: -0.5784269, y: 0.066034496}
-      - {x: -0.51662654, y: -0.5890436}
-      - {x: 0.016006656, y: -0.5059382}
-      - {x: 0.19562733, y: -0.5784097}
-      - {x: 0.18764761, y: -0.018317536}
-  m_UseDelaunayMesh: 0
+  m_Size: {x: 1.7197804, y: 2.1464677}
+  m_EdgeRadius: 0
+--- !u!114 &371121170335740125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7928983141235884712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09e043aa906115e4eb0f04676e1d4a83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Health
+  maxHealth: 2
+  healthBarUIPrefab: {fileID: 6768149988863322617, guid: 8ba570bf1521ea94eabdf7295c31c936, type: 3}
+  healthBarOffsetY: 1
+  invulnerabilityTime: 2
+  blinkInterval: 0.1
 --- !u!1 &8471235702168003249
 GameObject:
   m_ObjectHideFlags: 0
@@ -786,7 +788,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 066cc7941702be2409b4c86b8dac4ea9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
