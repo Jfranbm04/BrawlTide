@@ -12,12 +12,26 @@ public class EnemyController : MonoBehaviour
     private Animator animator;
     private SpriteRenderer spriteRenderer;
 
+    private float leftLimitX;
+    private float rightLimitX;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         // Inicializa el SpriteRenderer en Start
         //spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
+
+        // Guardamos la posición mundial (X) de los límites. 
+        // Esta posición es FIJA y no cambiará aunque los objetos hijo se muevan.
+        if (leftLimit != null)
+        {
+            leftLimitX = leftLimit.position.x;
+        }
+        if (rightLimit != null)
+        {
+            rightLimitX = rightLimit.position.x;
+        }
     }
 
     void Update()
@@ -30,25 +44,32 @@ public class EnemyController : MonoBehaviour
 
         animator.SetBool("isRunning", Mathf.Abs(rb.linearVelocity.x) > 0.01f);
 
-        // 3. Revisar los l�mites para voltear
+        // ** COMPRARACIÓN CONTRA LA POSICIÓN MUNDIAL GUARDADA **
         if (movingRight)
         {
-            // Si supera el l�mite derecho, cambiamos de direcci�n
-            if (transform.position.x >= rightLimit.position.x)
+            // Usamos la variable FIJA 'rightLimitX'
+            if (transform.position.x >= rightLimitX)
             {
                 movingRight = false;
+                // Debug.Log("Giro a la izquierda en: " + rightLimitX); // Línea para depurar
                 Flip();
             }
         }
-        else // Movi�ndose a la izquierda
+        else
         {
-            // Si supera el l�mite izquierdo, cambiamos de direcci�n
-            if (transform.position.x <= leftLimit.position.x)
+            // Usamos la variable FIJA 'leftLimitX'
+            if (transform.position.x <= leftLimitX)
             {
                 movingRight = true;
+                // Debug.Log("Giro a la derecha en: " + leftLimitX); // Línea para depurar
                 Flip();
             }
         }
+
+
+        
+
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

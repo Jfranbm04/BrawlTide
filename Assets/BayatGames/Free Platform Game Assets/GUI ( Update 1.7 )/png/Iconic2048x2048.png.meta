@@ -125,7 +125,7 @@ TextureImporter:
         width: 152
         height: 143
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -134,6 +134,28 @@ TextureImporter:
       bones: []
       spriteID: 4eee7828d3b71fd458e0204469a8682e
       internalID: 1182929350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: exitButton
+      rect:
+        serializedVersion: 2
+        x: 1621
+        y: 806
+        width: 142
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a7a3893fd33bdd4d9f34c5d4afde305
+      internalID: -1076917582
       vertices: []
       indices: 
       edges: []
@@ -1502,6 +1524,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
+      exitButton: -1076917582
       infoButton: 1182929350
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
