@@ -23,12 +23,14 @@ public class PlayerAttackController : MonoBehaviour
 
 
     [Header("Ataque a Distancia (Bolas)")]
-    public GameObject ballPrefab; 
-    public Transform launchPoint; 
-    public KeyCode launchKey = KeyCode.Mouse1;
-    public int maxBallCount = 10;
+    public GameObject ballPrefab;
+    public Transform launchPoint;
 
-    private int currentBallCount = 10; // Contador actual de bolas.
+    // El valor por defecto es Clic Derecho
+    public KeyCode launchKey = KeyCode.Mouse1;
+
+
+    private int currentBallCount = 0;
 
     void Update()
     {
@@ -42,18 +44,31 @@ public class PlayerAttackController : MonoBehaviour
     void LaunchBall()
     {
         // 1. Instanciar la bola en el punto de lanzamiento
-        GameObject ball = Instantiate(ballPrefab, launchPoint.position, Quaternion.identity);
+        GameObject ballObject = Instantiate(ballPrefab, launchPoint.position, Quaternion.identity);
 
-        // 2. Ajustar la dirección de la bola basándose en la dirección del jugador (scale.x)
+        // 2. OBTENER LA DIRECCIÓN DEL JUGADOR
+        // Asumimos por defecto que es la escala
         float playerDirection = transform.localScale.x > 0 ? 1f : -1f;
 
-        // Creamos un vector de dirección
-        Vector3 launchDirection = new Vector3(playerDirection, 0, 0);
+        SpriteRenderer mySprite = GetComponent<SpriteRenderer>();
+        if (mySprite != null && mySprite.flipX == true)
+        {
+            playerDirection = -1f;
+        }
 
-        // Rotamos la bola para que su 'derecha' coincida con la dirección del jugador
-        ball.transform.right = launchDirection;
+        // (Opcional) Si tu juego rota el personaje 180 grados en Y, descomenta esto:
+        // if (transform.right.x < 0) playerDirection = -1f;
 
-        // 3. Reducir el contador
+        // 3. OBTENER EL SCRIPT DE LA BOLA INSTANCIADA
+        ThrowableBall ballScript = ballObject.GetComponent<ThrowableBall>();
+
+        if (ballScript != null)
+        {
+            // 4. PASAR LA DIRECCIÓN
+            ballScript.SetDirection(playerDirection);
+        }
+
+        // 5. Reducir el contador
         currentBallCount--;
 
         Debug.Log("Bolas restantes: " + currentBallCount);
@@ -62,8 +77,8 @@ public class PlayerAttackController : MonoBehaviour
     // Método PÚBLICO para ser llamado por el objeto de recogida (Pickup)
     public void AddBalls(int amount)
     {
-        currentBallCount = Mathf.Min(currentBallCount + amount, maxBallCount);
-        Debug.Log($"¡Bolas añadidas! Total: {currentBallCount}");
+        // NO se usa Mathf.Min, se añade directamente.
+        currentBallCount += amount;
     }
 
     public int GetBallCount()
