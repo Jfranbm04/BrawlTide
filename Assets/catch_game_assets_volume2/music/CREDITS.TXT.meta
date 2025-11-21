@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: e415c78854fc64280b64d97dcbe88fe2
+timeCreated: 1444220060
+licenseType: Store
+TextScriptImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 18355
+  packageName: 2D Baseball Pack
+  packageVersion: 3.0.0
+  assetPath: Assets/catch_game_assets_volume2/music/CREDITS.TXT
+  uploadId: 271877

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: d37a1ea76bf764712a116532de6618e0
+timeCreated: 1444051180
+licenseType: Store
+DefaultImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 18355
+  packageName: 2D Baseball Pack
+  packageVersion: 3.0.0
+  assetPath: Assets/catch_game_assets_volume2/scenes/field.unity
+  uploadId: 271877

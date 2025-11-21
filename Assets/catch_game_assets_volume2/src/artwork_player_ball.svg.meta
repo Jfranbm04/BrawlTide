@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 3da90146a4a3842a89a787890c4a16ca
+timeCreated: 1444202427
+licenseType: Store
+DefaultImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 18355
+  packageName: 2D Baseball Pack
+  packageVersion: 3.0.0
+  assetPath: Assets/catch_game_assets_volume2/src/artwork_player_ball.svg
+  uploadId: 271877
