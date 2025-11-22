@@ -104,7 +104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43634a0cb6e6ad04bb28b4fd693cd607, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BallPickup
-  ballsToAdd: 10
+  ballsToAdd: 5
 --- !u!61 &6494430092347451992
 BoxCollider2D:
   m_ObjectHideFlags: 0

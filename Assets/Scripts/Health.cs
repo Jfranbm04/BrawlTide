@@ -1,18 +1,18 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections; // Necesario para Coroutines (Parpadeo/Invulnerabilidad)
-using UnityEngine.SceneManagement; // Necesario para la función de Game Over
+using UnityEngine.SceneManagement; // Necesario para la funciÃ³n de Game Over
 
 public class Health : MonoBehaviour
 {
-    // VARIABLES PÚBLICAS
+    // VARIABLES PÃšBLICAS
     public int maxHealth = 2;
     public GameObject healthBarUIPrefab;
     public float healthBarOffsetY = 0.5f;
 
     // >> NUEVAS VARIABLES PARA INVULNERABILIDAD <<
     [Header("Invulnerabilidad (Solo Player)")]
-    public float invulnerabilityTime = 2f; // Duración de invulnerabilidad en segundos
+    public float invulnerabilityTime = 2f; // DuraciÃ³n de invulnerabilidad en segundos
     public float blinkInterval = 0.1f; // Frecuencia de parpadeo
 
     // VARIABLES PRIVADAS
@@ -52,7 +52,7 @@ public class Health : MonoBehaviour
 
     public void TakeDamage(int damageAmount)
     {
-        // 1. Si es el jugador E invulnerable, ignorar el daño y salir.
+        // 1. Si es el jugador E invulnerable, ignorar el daÃ±o y salir.
         if (isInvulnerable && gameObject.CompareTag("Player"))
         {
             return;
@@ -72,7 +72,7 @@ public class Health : MonoBehaviour
             healthSlider.value = currentHealth;
         }
 
-        // 4. Comprobar si está muerto
+        // 4. Comprobar si estÃ¡ muerto
         if (currentHealth <= 0)
         {
             Die();
@@ -92,11 +92,11 @@ public class Health : MonoBehaviour
             Destroy(healthBarInstance);
         }
 
-        // Lógica de muerte:
+        // LÃ³gica de muerte:
         if (gameObject.CompareTag("Player"))
         {
-            // *** LÓGICA DE GAME OVER ***
-            Debug.Log("¡Juego Terminado! El jugador ha muerto.");
+            // *** LÃ“GICA DE GAME OVER ***
+            Debug.Log("Â¡Juego Terminado! El jugador ha muerto.");
 
             // Destruir el jugador. Para reiniciar, puedes cargar la escena actual:
             // SceneManager.LoadScene(SceneManager.GetActiveScene().name); 
@@ -105,7 +105,7 @@ public class Health : MonoBehaviour
         }
         else // Enemigo (o cualquier otra cosa que no sea el Player)
         {
-            // ¡Destruir el enemigo! (Lógica solicitada previamente)
+            // Â¡Destruir el enemigo! (LÃ³gica solicitada previamente)
             Destroy(gameObject);
         }
     }
@@ -135,7 +135,7 @@ public class Health : MonoBehaviour
             yield return new WaitForSeconds(blinkInterval);
         }
 
-        // Asegurarse de que el sprite esté visible al finalizar
+        // Asegurarse de que el sprite estÃ© visible al finalizar
         spriteRenderer.enabled = true;
         isInvulnerable = false;
     }
@@ -144,7 +144,7 @@ public class Health : MonoBehaviour
     {
         if (healthBarInstance != null)
         {
-            // Usamos la variable pública para el desplazamiento Y
+            // Usamos la variable pÃºblica para el desplazamiento Y
             Vector3 offset = new Vector3(0, healthBarOffsetY, 0);
             healthBarInstance.transform.position = transform.position + offset;
         }
