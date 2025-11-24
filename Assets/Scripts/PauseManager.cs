@@ -45,6 +45,14 @@ public class PauseManager : MonoBehaviour
         GameIsPaused = true;          // Actualiza la bandera de estado
     }
 
+    public void RestartLevel()
+    {
+        Time.timeScale = 1f;
+
+        // 2. Carga la escena actual de nuevo para reiniciar el nivel
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
     // Función para salir del nivel (puedes adaptarla para cargar el menú principal)
     public void LoadMenu()
     {

@@ -8,6 +8,7 @@ public class Health : MonoBehaviour
     // VARIABLES PÚBLICAS
     public int maxHealth = 2;
     public GameObject healthBarUIPrefab;
+    public GameObject gameOverPanel;
     public float healthBarOffsetY = 0.5f;
 
     // >> NUEVAS VARIABLES PARA INVULNERABILIDAD <<
@@ -86,28 +87,53 @@ public class Health : MonoBehaviour
 
     void Die()
     {
-        // Limpiar la barra de vida
+        // 1. LIMPIAR LA BARRA DE VIDA (Esto se ejecuta para jugador Y enemigo)
         if (healthBarInstance != null)
         {
             Destroy(healthBarInstance);
         }
 
-        // Lógica de muerte:
+        // 2. LÓGICA ESPECÍFICA PARA EL JUGADOR
         if (gameObject.CompareTag("Player"))
         {
-            // *** LÓGICA DE GAME OVER ***
-            Debug.Log("¡Juego Terminado! El jugador ha muerto.");
+            if (gameOverPanel != null)
+            {
+                // Activar el panel y detener el tiempo
+                gameOverPanel.SetActive(true);
+                Time.timeScale = 0f;
 
-            // Destruir el jugador. Para reiniciar, puedes cargar la escena actual:
-            // SceneManager.LoadScene(SceneManager.GetActiveScene().name); 
+                // CONGELAR/DESACTIVAR EL JUGADOR
+                if (spriteRenderer != null)
+                {
+                    spriteRenderer.enabled = false; // Oculta el sprite
+                }
 
-            Destroy(gameObject);
+                // Desactiva colisión y detiene movimiento
+                Collider2D col = GetComponent<Collider2D>();
+                if (col != null) col.enabled = false;
+
+                Rigidbody2D rb = GetComponent<Rigidbody2D>();
+                if (rb != null) rb.linearVelocity = Vector2.zero;
+            }
+            else
+            {
+                // Si el panel no está asignado, destruye al jugador (fallback)
+                Destroy(gameObject);
+            }
         }
-        else // Enemigo (o cualquier otra cosa que no sea el Player)
+        else // Enemigo (o cualquier otra cosa)
         {
-            // ¡Destruir el enemigo! (Lógica solicitada previamente)
+            // 3. Destruir el enemigo
             Destroy(gameObject);
         }
+    }
+    public void RestartLevel()
+    {
+        // 1. Asegúrate de reanudar el tiempo ANTES de cargar la escena
+        Time.timeScale = 1f;
+
+        // 2. Carga la escena actual de nuevo para reiniciar el nivel
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     // Coroutine para manejar el tiempo de invulnerabilidad y el efecto visual
