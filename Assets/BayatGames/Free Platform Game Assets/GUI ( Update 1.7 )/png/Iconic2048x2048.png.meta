@@ -117,7 +117,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: infoButton
+      name: homeButton
       rect:
         serializedVersion: 2
         x: 1614
@@ -156,6 +156,28 @@ TextureImporter:
       bones: []
       spriteID: 0a7a3893fd33bdd4d9f34c5d4afde305
       internalID: -1076917582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: homeButto
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1398
+        width: 146
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 3}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02a68a1af4ab81d418deea0526ec6d9d
+      internalID: -1251157800
       vertices: []
       indices: 
       edges: []
@@ -1525,7 +1547,8 @@ TextureImporter:
       entries: []
     nameFileIdTable:
       exitButton: -1076917582
-      infoButton: 1182929350
+      homeButto: -1251157800
+      homeButton: 1182929350
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

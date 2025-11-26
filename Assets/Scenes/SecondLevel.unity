@@ -269,7 +269,7 @@ GameObject:
   - component: {fileID: 7009705}
   m_Layer: 6
   m_Name: HillLeft (2)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1646,7 +1646,7 @@ GameObject:
   - component: {fileID: 294332016}
   m_Layer: 6
   m_Name: HillLeft (1)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2342,7 +2342,7 @@ GameObject:
   - component: {fileID: 441161517}
   m_Layer: 6
   m_Name: GrassJoinHillLeft&Right
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3749,6 +3749,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chest
       objectReference: {fileID: 0}
+    - target: {fileID: 4146497519155611152, guid: 1181da3d44fe07049a37765709370666, type: 3}
+      propertyPath: ballsToAdd
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6989076530975561782, guid: 1181da3d44fe07049a37765709370666, type: 3}
       propertyPath: m_SortingOrder
       value: 3
@@ -4542,9 +4546,9 @@ GameObject:
   - component: {fileID: 1140982281}
   - component: {fileID: 1140982280}
   - component: {fileID: 1140982279}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: HillLeft2 (1)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4855,9 +4859,9 @@ GameObject:
   - component: {fileID: 1213381392}
   - component: {fileID: 1213381391}
   - component: {fileID: 1213381393}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: HillLeft2
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7654,7 +7658,7 @@ GameObject:
   - component: {fileID: 1880977283}
   m_Layer: 6
   m_Name: HillLeft
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8187,7 +8191,7 @@ GameObject:
   - component: {fileID: 1975236473}
   m_Layer: 6
   m_Name: GrassJoinHillLeft&Right (1)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9502,6 +9506,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2186689364427644299, guid: a07c01e3ac082324c8abe49f8357919d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7244557932403205172}
+    - target: {fileID: 2186689364427644299, guid: a07c01e3ac082324c8abe49f8357919d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadMenu
+      objectReference: {fileID: 0}
     - target: {fileID: 3121564087354728166, guid: a07c01e3ac082324c8abe49f8357919d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -9586,6 +9598,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5678624789057032354, guid: a07c01e3ac082324c8abe49f8357919d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7244557932403205172}
+    - target: {fileID: 5678624789057032354, guid: a07c01e3ac082324c8abe49f8357919d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Resume
+      objectReference: {fileID: 0}
     - target: {fileID: 6338784609382581515, guid: a07c01e3ac082324c8abe49f8357919d, type: 3}
       propertyPath: m_Name
       value: PauseCanvas
@@ -9621,11 +9641,11 @@ PrefabInstance:
       objectReference: {fileID: 945294839}
     - target: {fileID: 7061180525006783294, guid: adbfbac3dc2bdc943b0e7d127c033992, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 17.915691
+      value: -26.45443
       objectReference: {fileID: 0}
     - target: {fileID: 7061180525006783294, guid: adbfbac3dc2bdc943b0e7d127c033992, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.767336
+      value: -8.671787
       objectReference: {fileID: 0}
     - target: {fileID: 7061180525006783294, guid: adbfbac3dc2bdc943b0e7d127c033992, type: 3}
       propertyPath: m_LocalPosition.z
@@ -9661,7 +9681,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7065226887925988798, guid: adbfbac3dc2bdc943b0e7d127c033992, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8417773838241282176, guid: adbfbac3dc2bdc943b0e7d127c033992, type: 3}
       propertyPath: maxX
