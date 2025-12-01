@@ -2535,6 +2535,10 @@ PrefabInstance:
       propertyPath: gameOverPanel
       value: 
       objectReference: {fileID: 1552721338}
+    - target: {fileID: 6361147427160751542, guid: adbfbac3dc2bdc943b0e7d127c033992, type: 3}
+      propertyPath: meleeAttackSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: ba6c801f271f17c4da6b33cbaf1874e4, type: 3}
     - target: {fileID: 7061180525006783294, guid: adbfbac3dc2bdc943b0e7d127c033992, type: 3}
       propertyPath: m_LocalPosition.x
       value: -14.064581
