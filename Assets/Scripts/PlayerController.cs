@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private Animator animator;
     private SpriteRenderer spriteRenderer;
+    [SerializeField] AudioSource jumpSound;
 
     void Start()
     {
@@ -45,7 +46,8 @@ public class PlayerController : MonoBehaviour
         {
             // Aplica la fuerza de salto
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
-            
+            jumpSound.Play();
+
             // Consume un salto
             remainingJumps--;
         }
