@@ -4,12 +4,14 @@ public class PlayerAttackController : MonoBehaviour
 {
 
     public GameObject meleeHitbox;
-
+    [SerializeField] AudioSource punchSound;
     public void EnableHitbox()
     {
         if (meleeHitbox != null)
         {
             meleeHitbox.SetActive(true);
+            punchSound.Play();
+
         }
     }
 
