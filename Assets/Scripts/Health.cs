@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections; // Necesario para Coroutines (Parpadeo/Invulnerabilidad)
-using UnityEngine.SceneManagement; // Necesario para la función de Game Over
+using System.Collections;
+using UnityEngine.SceneManagement; 
 
 public class Health : MonoBehaviour
 {
@@ -10,8 +10,8 @@ public class Health : MonoBehaviour
     public GameObject healthBarUIPrefab;
     public GameObject gameOverPanel;
     public float healthBarOffsetY = 0.5f;
+    [SerializeField] AudioSource hitSound;
 
-    // >> NUEVAS VARIABLES PARA INVULNERABILIDAD <<
     [Header("Invulnerabilidad (Solo Player)")]
     public float invulnerabilityTime = 2f; // Duración de invulnerabilidad en segundos
     public float blinkInterval = 0.1f; // Frecuencia de parpadeo
@@ -53,6 +53,12 @@ public class Health : MonoBehaviour
 
     public void TakeDamage(int damageAmount)
     {
+        // Sonido recibe daño
+        if(gameObject.CompareTag("Player"))
+        {
+            hitSound.Play();
+        }
+
         // 1. Si es el jugador E invulnerable, ignorar el daño y salir.
         if (isInvulnerable && gameObject.CompareTag("Player"))
         {

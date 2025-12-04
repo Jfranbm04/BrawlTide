@@ -5,6 +5,7 @@ public class PlayerAttackController : MonoBehaviour
 
     public GameObject meleeHitbox;
     [SerializeField] AudioSource punchSound;
+    [SerializeField] AudioSource throwSound;
     public void EnableHitbox()
     {
         if (meleeHitbox != null)
@@ -48,6 +49,8 @@ public class PlayerAttackController : MonoBehaviour
         // 1. Instanciar la bola en el punto de lanzamiento
         GameObject ballObject = Instantiate(ballPrefab, launchPoint.position, Quaternion.identity);
 
+        throwSound.Play();
+
         // 2. OBTENER LA DIRECCIÓN DEL JUGADOR
         // Asumimos por defecto que es la escala
         float playerDirection = transform.localScale.x > 0 ? 1f : -1f;
@@ -58,8 +61,6 @@ public class PlayerAttackController : MonoBehaviour
             playerDirection = -1f;
         }
 
-        // (Opcional) Si tu juego rota el personaje 180 grados en Y, descomenta esto:
-        // if (transform.right.x < 0) playerDirection = -1f;
 
         // 3. OBTENER EL SCRIPT DE LA BOLA INSTANCIADA
         ThrowableBall ballScript = ballObject.GetComponent<ThrowableBall>();
@@ -79,7 +80,6 @@ public class PlayerAttackController : MonoBehaviour
     // Método PÚBLICO para ser llamado por el objeto de recogida (Pickup)
     public void AddBalls(int amount)
     {
-        // NO se usa Mathf.Min, se añade directamente.
         currentBallCount += amount;
     }
 

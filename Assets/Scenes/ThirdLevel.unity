@@ -803,6 +803,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1003514557992035097, guid: 74e9229f95173254cbc35808cda943a2, type: 3}
+      propertyPath: targetSceneName
+      value: WinnerScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 1003514557992035097, guid: 74e9229f95173254cbc35808cda943a2, type: 3}
       propertyPath: transitionManager
       value: 
       objectReference: {fileID: 0}

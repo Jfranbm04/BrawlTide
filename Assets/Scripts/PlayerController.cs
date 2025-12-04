@@ -33,14 +33,12 @@ public class PlayerController : MonoBehaviour
         // 1. COMPROBACIÓN DE SUELO
         bool isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
 
-        // 1.1. LÓGICA DE REINICIO DE SALTO (NUEVO)
         if (isGrounded)
         {
             // Si el personaje está tocando el suelo, reinicia los saltos disponibles.
             remainingJumps = maxJumps;
         }
 
-        // 2. LÓGICA DE SALTO (MODIFICADO)
         // El salto se permite si se pulsa "Jump" Y (hay saltos restantes > 0)
         if (Input.GetButtonDown("Jump") && remainingJumps > 0)
         {
@@ -60,7 +58,6 @@ public class PlayerController : MonoBehaviour
         animator.SetFloat("Speed", Mathf.Abs(horizontalInput));
 
         // 4. LÓGICA DE ATAQUE
-        // (0 = click izquierdo, 1 = click derecho, 2 = click central)
         if (Input.GetMouseButtonDown(0))
         {
             // Activa el Trigger "Attack" en el Animator
